@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{711D9CFF-8F5F-49C9-A217-E6EC8075EA8A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfControlConfiguratorDemo</RootNamespace>
+    <AssemblyName>WpfControlConfiguratorDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0001;IDE0002;IDE0003;IDE0016;IDE0017;IDE0018;IDE0019;IDE0020;IDE0028</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0001;IDE0002;IDE0003;IDE0016;IDE0017;IDE0018;IDE0019;IDE0020;IDE0028</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\icon_app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="InfragisticsWPF4.Controls.Charts.XamDataChart.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.Controls.Gauges.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.DataPresenter.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.DataVisualization.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.Editors.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="InfragisticsWPF4.v17.2, Version=17.2.20172.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\BooleanToTextConverter.cs" />
+    <Compile Include="Model\CustomFieldLabel.cs" />
+    <Compile Include="Model\Feature.cs" />
+    <Compile Include="SampleData\DataGenerator.cs" />
+    <Compile Include="SampleData\StringCase.cs" />
+    <Compile Include="SampleData\WordType.cs" />
+    <Compile Include="Services\DataGridSampleData.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\SampleDataUtil.cs" />
+    <Compile Include="Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StyleSelectors\TestStyleSelector.cs" />
+    <Compile Include="View\BulletGraphView.xaml.cs">
+      <DependentUpon>BulletGraphView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BulletGraphViewModel.cs">
+      <DependentUpon>BulletGraphView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryChartView.xaml.cs">
+      <DependentUpon>CategoryChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryChartViewModel.cs">
+      <DependentUpon>CategoryChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridLayoutGroupView.xaml.cs">
+      <DependentUpon>DataGridLayoutGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridLayoutGroupViewModel.cs">
+      <DependentUpon>DataGridLayoutGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridManualLayoutView.xaml.cs">
+      <DependentUpon>DataGridManualLayoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridManualLayoutViewModel.cs">
+      <DependentUpon>DataGridManualLayoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridNestedLayoutView.xaml.cs">
+      <DependentUpon>DataGridNestedLayoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DataGridNestedLayoutViewModel.cs">
+      <DependentUpon>DataGridNestedLayoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LinearGaugeView.xaml.cs">
+      <DependentUpon>LinearGaugeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LinearGaugeViewModel.cs">
+      <DependentUpon>LinearGaugeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PieChartView.xaml.cs">
+      <DependentUpon>PieChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PieChartViewModel.cs">
+      <DependentUpon>PieChartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RadialGaugeView.xaml.cs">
+      <DependentUpon>RadialGaugeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RadialGaugeViewModel.cs">
+      <DependentUpon>RadialGaugeView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\ComboBoxDataItem.cs" />
+    <Compile Include="Model\CustomDataModel.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\DataItem.cs" />
+    <Compile Include="Model\HierarchicalDataItem.cs" />
+    <Compile Include="Model\ItemBase.cs" />
+    <Compile Include="Model\ObservableObject.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderDetail.cs" />
+    <Compile Include="Model\PieChartItem.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BulletGraphView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CategoryChartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DataGridLayoutGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataGridManualLayoutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataGridNestedLayoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LinearGaugeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PieChartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RadialGaugeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon.png" />
+    <Resource Include="Images\icon_app.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

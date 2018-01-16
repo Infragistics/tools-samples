@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="WpfControlConfiguratorDemo.View.DataGridManualLayoutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dp="http://infragistics.com/DataPresenter"
+    xmlns:view="clr-namespace:WpfControlConfiguratorDemo.View"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="800">
+    <UserControl.DataContext>
+        <view:DataGridManualLayoutViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            VerticalAlignment="Center"
+            Text="Data Grid Manual Layout"
+            Margin="7" />
+
+        <!-- playground XamDataGrid -->
+        <dp:XamDataGrid
+            Visibility="Collapsed"
+            Grid.Row="1"/>
+
+        <dp:XamDataGrid
+            DataSource="{Binding Path=Orders}"
+            Grid.Row="1">
+            <dp:XamDataGrid.FieldLayoutSettings>
+                <dp:FieldLayoutSettings
+                    AutoGenerateFields="False" />
+            </dp:XamDataGrid.FieldLayoutSettings>
+            <dp:XamDataGrid.FieldLayouts>
+                <dp:FieldLayout>
+                    <dp:FieldLayout.Settings>
+                        <dp:FieldLayoutSettings
+                            AutoArrangeCells="Never" />
+                    </dp:FieldLayout.Settings>
+                    <dp:DateTimeField
+                        Column="0"
+                        Name="DateOrdered"
+                        Label="Date Ordered" />
+                    <dp:CheckBoxField
+                        Column="0"
+                        ColumnSpan="3"
+                        Row="1"
+                        Name="HasBeenApproved"
+                        Label="Approved" />
+                    <dp:ComboBoxField
+                        Label="Ship State"
+                        Column="1"
+                        Name="ShipState"
+                        ItemsSource="{dp:FieldBinding Path=States}" />
+                    <dp:ComboBoxField
+                        Label="Order Status"
+                        Column="2"
+                        Name="OrderStatus"
+                        ValuePath="Key"
+                        DisplayMemberPath="Text"
+                        ItemsSource="{dp:FieldBinding Path=OrderStatusComboBoxDataItems}" />
+                    <dp:MaskedTextField
+                        Column="0"
+                        ColumnSpan="3"
+                        Row="2"
+                        Mask="??-####"
+                        Label="Accounting Code"
+                        Name="AccountingCode" />
+                    <dp:CurrencyField
+                        Label="Sub Total"
+                        RowSpan="3"
+                        Column="4"
+                        LabelTextAlignment="Right"
+                        Name="SubTotal" />
+                </dp:FieldLayout>
+            </dp:XamDataGrid.FieldLayouts>
+        </dp:XamDataGrid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,174 @@
+﻿<UserControl
+    x:Class="WpfControlConfiguratorDemo.View.DataGridNestedLayoutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dp="http://infragistics.com/DataPresenter"
+    xmlns:view="clr-namespace:WpfControlConfiguratorDemo.View"
+    xmlns:editors="http://infragistics.com/Editors"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="1600">
+    <UserControl.DataContext>
+        <view:DataGridNestedLayoutViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            VerticalAlignment="Center"
+            Text="Data Grid Nested Layout"
+            Margin="7" />
+
+        <!-- playground XamDataGrid -->
+        <dp:XamDataGrid
+            Grid.Row="1"
+            Visibility="Collapsed">
+        </dp:XamDataGrid>
+
+        <dp:XamDataGrid
+            DataSource="{Binding Path=Orders}"
+            x:Name="XamDataGrid"
+            Grid.Row="1">
+            <dp:XamDataGrid.FieldLayoutSettings>
+                <dp:FieldLayoutSettings
+                    AutoGenerateFields="False" />
+            </dp:XamDataGrid.FieldLayoutSettings>
+            <dp:XamDataGrid.FieldLayouts>
+                <dp:FieldLayout
+                    Key="OrderDetail">
+                    <dp:Field
+                        BindingType="Unbound"
+                        Label="Unbound Field"
+                        Name="UnboundField" />
+                    <dp:Field
+                        BindingType="Unbound"
+                        Label="Unbound Field"
+                        Name="UnboundField" />
+                    <dp:TextField
+                        Label="Item Name"
+                        Name="Name" />
+                    <dp:CurrencyField
+                        Label="Price"
+                        Name="Price" />
+                    <dp:Field
+                        Label="Features"
+                        Name="Features" />
+                </dp:FieldLayout>
+                <dp:FieldLayout
+                    Key="Feature">
+                    <dp:Field
+                        Name="Id" />
+                    <dp:Field
+                        Label="Item Name"
+                        Name="Name" />
+                </dp:FieldLayout>
+                <dp:FieldLayout
+                    Key="Order">
+                    <dp:TextField
+                        Label="First Name"
+                        AlternateBinding="{Binding Path=Customer.FirstName, Mode=TwoWay}"
+                        BindingType="UseAlternateBinding"
+                        Name="CustomerFirstName" />
+                    <dp:TextField
+                        Label="City"
+                        AlternateBinding="{Binding Path=Customer.Address.City, Mode=TwoWay}"
+                        BindingType="UseAlternateBinding"
+                        Name="CustomerAddressCity" />
+                    <dp:ComboBoxField
+                        Label="Ship State"
+                        ItemsSource="{dp:FieldBinding Path=States}"
+                        Name="ShipState" />
+                    <dp:ComboBoxField
+                        Label="Status"
+                        AlternateBinding="{Binding Path=Customer.Status, Mode=TwoWay}"
+                        BindingType="UseAlternateBinding"
+                        ItemsSource="{dp:FieldBinding Path=CustomerStatuses}"
+                        Name="CustomerStatus" />
+                    <dp:NumericField
+                        Label="Order Id"
+                        Name="OrderId" />
+                    <dp:DateTimeField
+                        Label="Date Ordered"
+                        Name="DateOrdered" />
+                    <dp:CheckBoxField
+                        Label="Approved"
+                        Name="HasBeenApproved" />
+                    <dp:ComboBoxField
+                        Label="Order Status"
+                        DisplayMemberPath="Text"
+                        ItemsSource="{dp:FieldBinding Path=OrderStatusComboBoxDataItems}"
+                        Name="OrderStatus"
+                        ValuePath="Key" />
+                    <dp:MaskedTextField
+                        Label="Accounting Code"
+                        Mask="??-####"
+                        Name="AccountingCode" />
+                    <dp:MaskedTextField
+                        HorizontalContentAlignment="Right"
+                        LabelTextAlignment="Right"
+                        Mask="{}{double:6.2}"
+                        Name="Total" />
+                    <dp:CurrencyField
+                        LabelTextAlignment="Right"
+                        Name="SubTotal" />
+                    <dp:TemplateField
+                        Name="TemplateData">
+                        <dp:TemplateField.DisplayTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BorderBrush="Red"
+                                    BorderThickness="1">
+                                    <TextBlock
+                                        Text="{editors:TemplateEditorValueBinding}" />
+                                </Border>
+                            </DataTemplate>
+                        </dp:TemplateField.DisplayTemplate>
+                        <dp:TemplateField.EditTemplate>
+                            <DataTemplate>
+                                <Border
+                                    BorderBrush="Green"
+                                    BorderThickness="1">
+                                    <editors:XamTextEditor
+                                        Text="{editors:TemplateEditorValueBinding}" />
+                                </Border>
+                            </DataTemplate>
+                        </dp:TemplateField.EditTemplate>
+                    </dp:TemplateField>
+                    <dp:Field
+                        Label="Order Details"
+                        Name="OrderDetails" />
+                    <dp:Field
+                        Label="Order Details"
+                        Name="OrderDetailsTwo" />
+                </dp:FieldLayout>
+                <dp:FieldLayout
+                    Key="OrderDetail">
+                    <dp:TextField
+                        Label="Item Name"
+                        Name="Name" />
+                    <dp:CurrencyField
+                        Label="Price"
+                        Name="Price" />
+                    <dp:Field
+                        Label="Features"
+                        Name="Features" />
+                </dp:FieldLayout>
+                <dp:FieldLayout
+                    Key="Feature">
+                    <dp:NumericField
+                        Name="Id" />
+                    <dp:TextField
+                        Name="Name" />
+                </dp:FieldLayout>
+            </dp:XamDataGrid.FieldLayouts>
+        </dp:XamDataGrid>
+
+    </Grid>
+</UserControl>
